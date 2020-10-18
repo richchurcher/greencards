@@ -1,11 +1,13 @@
 export interface ClientConfig {
   apiUrl: string;
+  categoryApiUrl: string;
   maxQuestions: number;
 }
 
 export const getConfig = (): ClientConfig => {
   const config: ClientConfig = {
     apiUrl: process.env.REACT_APP_API_URL!,
+    categoryApiUrl: process.env.REACT_APP_CATEGORY_API_URL!,
     maxQuestions: Number(process.env.REACT_APP_MAX_QUESTIONS!),
   };
 

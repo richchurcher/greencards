@@ -1,9 +1,26 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import config from "../config";
+import { Category } from "../store/category";
 import { Question, QuestionDifficultyLevel } from "../store/question";
 
-const useQuestions = (
+let categoryCache: Category[];
+
+const buildQueryString = (
+  topic: string,
+  difficulty: QuestionDifficultyLevel,
+  quantity: number
+): string => {
+  if (!categoryCache) {
+    throw Error("Category cache is empty.");
+  }
+
+  return `?amount=${encodeURIComponent(quantity)}&category=${encodeURIComponent(
+    15
+  )}&difficulty=${encodeURIComponent(difficulty)}`;
+};
+
+export const useQuestions = (
   topic: string,
   difficulty: QuestionDifficultyLevel,
   quantity: number
@@ -44,5 +61,3 @@ const useQuestions = (
 
   return { error, loading, questions };
 };
-
-export default useQuestions;

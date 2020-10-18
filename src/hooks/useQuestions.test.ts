@@ -1,5 +1,5 @@
 import { renderHook } from "@testing-library/react-hooks";
-import useQuestions from "./useQuestions";
+import { useQuestions } from "./useQuestions";
 import axios from "axios";
 import config from "../config";
 
