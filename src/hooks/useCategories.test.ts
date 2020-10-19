@@ -1,9 +1,10 @@
-import { renderHook } from "@testing-library/react-hooks";
-import { useCategories } from "./useCategories";
-import axios from "axios";
-
 jest.mock("axios");
-const mockedAxios = axios as jest.Mocked<typeof axios>;
+import { renderHook } from "@testing-library/react-hooks";
+import axios from "axios";
+import { mocked } from "ts-jest/utils";
+import { useCategories } from "./useCategories";
+
+const mockedAxios = mocked(axios, true);
 const useQuestionsMock = {
   data: {
     trivia_categories: [
