@@ -1,18 +1,26 @@
-import React from "react";
+import React, { FC } from "react";
+import CategorySelector from "./components/CategorySelector";
+import Loading from "./components/Loading";
+import { useCategories } from "./hooks/useCategories";
 
-function App() {
+const App: FC = () => {
+  const { error, loading, categories } = useCategories();
+
+  if (loading) {
+    return <Loading />;
+  }
+
   return (
     <>
-      <label htmlFor="questionCategory">Choose a trivia category</label>
-      <select name="questionCategory" />
+      <CategorySelector categories={categories} />
       <label htmlFor="questionQuantity">
         How many questions would you like?
       </label>
-      <input type="number" name="questionQuantity" />
+      <input type="number" id="questionQuantity" />
       <label htmlFor="questionDifficulty">Select difficulty level</label>
-      <select name="questionDifficulty" />
+      <select id="questionDifficulty" />
     </>
   );
-}
+};
 
 export default App;
