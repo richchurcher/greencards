@@ -1,25 +1,36 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import CategorySelector from "./components/CategorySelector";
+import DifficultySelector from "./components/DifficultySelector";
+import Error from "./components/Error";
 import Loading from "./components/Loading";
+import QuantitySelector from "./components/QuantitySelector";
+import Quiz from "./components/Quiz";
 import { useCategories } from "./hooks/useCategories";
+import QuizProvider from "./store/QuizProvider";
 
 const App: FC = () => {
   const { error, loading, categories } = useCategories();
+  const [quizVisible, setQuizVisible] = useState(false);
+
+  if (error) {
+    return <Error>{error}</Error>;
+  }
 
   if (loading) {
     return <Loading />;
   }
 
   return (
-    <>
+    <QuizProvider>
       <CategorySelector categories={categories} />
-      <label htmlFor="questionQuantity">
-        How many questions would you like?
-      </label>
-      <input type="number" id="questionQuantity" />
-      <label htmlFor="questionDifficulty">Select difficulty level</label>
-      <select id="questionDifficulty" />
-    </>
+      <QuantitySelector />
+      <DifficultySelector />
+      {quizVisible ? (
+        <Quiz />
+      ) : (
+        <button onClick={() => setQuizVisible(true)}>Start</button>
+      )}
+    </QuizProvider>
   );
 };
 
