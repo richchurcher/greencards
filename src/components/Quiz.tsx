@@ -6,15 +6,8 @@ import Error from "./Error";
 import Loading from "./Loading";
 
 const Quiz: FC = () => {
-  const {
-    categoryId,
-    difficulty,
-    error,
-    quantity,
-    questions,
-    ready,
-  } = useQuiz();
-  useQuestions(categoryId, difficulty, quantity);
+  useQuestions();
+  const { error, questions, ready } = useQuiz();
 
   if (!ready) {
     return (
