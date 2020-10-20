@@ -1,63 +1,70 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { flow } from "mobx";
+import { useEffect } from "react";
 import config from "../config";
-import { Category } from "../store/category";
-import { Question, QuestionDifficultyLevel } from "../store/question";
+import { QuestionDifficultyLevel } from "../store/question";
+import { useQuiz } from "./useQuiz";
 
-let categoryCache: Category[];
-
-const buildQueryString = (
-  topic: string,
+const buildRequestUrl = (
+  category: number,
   difficulty: QuestionDifficultyLevel,
   quantity: number
-): string => {
-  if (!categoryCache) {
-    throw Error("Category cache is empty.");
-  }
+): string =>
+  `${config.apiUrl}?amount=${encodeURIComponent(
+    quantity
+  )}&category=${encodeURIComponent(category)}&difficulty=${encodeURIComponent(
+    difficulty
+  )}`;
 
-  return `?amount=${encodeURIComponent(quantity)}&category=${encodeURIComponent(
-    15
-  )}&difficulty=${encodeURIComponent(difficulty)}`;
-};
-
-export const useQuestions = (
-  topic: string,
-  difficulty: QuestionDifficultyLevel,
-  quantity: number
-) => {
-  const [error, setError] = useState<Error>();
-  const [loading, setLoading] = useState(false);
-  const [questions, setQuestions] = useState<Question[]>();
+export const useQuestions = () => {
+  const quiz = useQuiz();
 
   useEffect(() => {
-    const fetchQuestions = async () => {
+    const fetchQuestions = flow(function* () {
       try {
-        setLoading(true);
-        const { data } = await axios.get(config.apiUrl);
-        setQuestions(data.result);
+        quiz.loading = true;
+        const {
+          data: { results },
+        } = yield axios.get(
+          buildRequestUrl(quiz.categoryId, quiz.difficulty, quiz.quantity)
+        );
+        quiz.questions.replace(results);
+        quiz.ready = true;
       } catch (e) {
-        setError(Error(e.message));
+        quiz.error = Error(e.message);
+        quiz.ready = false;
       } finally {
-        setLoading(false);
+        quiz.loading = false;
       }
-    };
+    });
 
-    if (!topic) {
-      setError(Error("No topic provided."));
+    if (!quiz.categoryId) {
+      quiz.error = Error("No category provided.");
+      return;
     }
 
-    if (quantity < 1) {
-      setError(Error("Have to answer at least one question."));
+    if (quiz.quantity < 1) {
+      quiz.error = Error("Have to answer at least one question.");
+      return;
     }
 
-    if (quantity > config.maxQuestions) {
-      setError(
-        Error(`Sorry, you can only have ${config.maxQuestions} in a quiz.`)
+    if (quiz.quantity > config.maxQuestions) {
+      quiz.error = Error(
+        `Sorry, you can only have ${config.maxQuestions} in a quiz.`
       );
+      return;
     }
 
-    fetchQuestions();
-  }, []);
-
-  return { error, loading, questions };
+    if (!quiz.loading && !quiz.error && !quiz.ready) {
+      fetchQuestions();
+    }
+  }, [
+    quiz.categoryId,
+    quiz.difficulty,
+    quiz.error,
+    quiz.loading,
+    quiz.quantity,
+    quiz.questions,
+    quiz.ready,
+  ]);
 };
