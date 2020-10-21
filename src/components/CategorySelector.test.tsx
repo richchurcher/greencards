@@ -3,18 +3,36 @@ import userEvent from "@testing-library/user-event";
 import React from "react";
 import { QuizStore } from "../store/quiz";
 import { QuizContext } from "../store/QuizProvider";
-import DifficultySelector from "./DifficultySelector";
+import CategorySelector from "./CategorySelector";
 
-test("updates difficulty in store", () => {
-  const mockStore = { difficulty: "easy" };
+const categories = [
+  { id: 1, name: "Wombats" },
+  { id: 2, name: "Aardvarks" },
+];
+
+test("renders the correct number of options", () => {
+  const mockStore = { categoryId: 1 };
   render(
     <QuizContext.Provider value={mockStore as QuizStore}>
-      <DifficultySelector />
+      <CategorySelector categories={categories} />
+    </QuizContext.Provider>
+  );
+  const categorySelector = screen.getByRole("combobox", {
+    name: /choose a trivia category/i,
+  });
+  expect(categorySelector).toHaveLength(categories.length);
+});
+
+test("updates categoryId in store", () => {
+  const mockStore = { categoryId: 0 };
+  render(
+    <QuizContext.Provider value={mockStore as QuizStore}>
+      <CategorySelector categories={categories} />
     </QuizContext.Provider>
   );
   userEvent.selectOptions(
-    screen.getByRole("combobox", { name: /select difficulty/i }),
-    "hard"
+    screen.getByRole("combobox", { name: /choose a trivia category/i }),
+    "2"
   );
-  expect(mockStore.difficulty).toBe("hard");
+  expect(mockStore.categoryId).toBe(2);
 });

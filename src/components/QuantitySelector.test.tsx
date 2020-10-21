@@ -20,19 +20,3 @@ test("updates quantity in store", () => {
   );
   expect(mockStore.quantity).toBe(5);
 });
-
-test("does not update for values less than 1", () => {
-  const mockStore = { quantity: 1 };
-  render(
-    <QuizContext.Provider value={mockStore as QuizStore}>
-      <QuantitySelector />
-    </QuizContext.Provider>
-  );
-  userEvent.type(
-    screen.getByRole("spinbutton", {
-      name: /how many questions would you like?/i,
-    }),
-    "0"
-  );
-  expect(mockStore.quantity).toBe(1);
-});
