@@ -14,7 +14,7 @@ const buildRequestUrl = (
     quantity
   )}&category=${encodeURIComponent(category)}&difficulty=${encodeURIComponent(
     difficulty
-  )}`;
+  )}&encode=base64`;
 
 export const useQuestions = () => {
   const quiz = useQuiz();
