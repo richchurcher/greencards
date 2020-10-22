@@ -1,5 +1,5 @@
 import { IObservableArray, observable } from "mobx";
-import { Question, QuestionDifficultyLevel } from "./question";
+import { QuestionDifficultyLevel, QuestionType } from "./question";
 
 export const fromBase64 = (s: string): string =>
   Buffer.from(s, "base64").toString();
@@ -12,8 +12,8 @@ export interface QuizStore {
   loading: boolean;
   ready: boolean;
   quantity: number;
-  questions: IObservableArray<Question>;
-  readonly question: Question;
+  questions: IObservableArray<QuestionType>;
+  readonly question: QuestionType;
   readonly randomisedAnswers: string[];
   score: number;
 }
@@ -26,9 +26,9 @@ const quizStore = observable<QuizStore>({
   loading: false,
   ready: false,
   quantity: 1,
-  questions: observable<Question>([]),
+  questions: observable<QuestionType>([]),
   score: 0,
-  get question(): Question {
+  get question(): QuestionType {
     return this.questions[this.currentQuestion];
   },
   get randomisedAnswers(): string[] {

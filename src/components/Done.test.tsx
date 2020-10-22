@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
 import { observable } from "mobx";
 import React from "react";
-import { Question } from "../store/question";
+import { QuestionType } from "../store/question";
 import { QuizStore } from "../store/quiz";
 import { QuizContext } from "../store/QuizProvider";
 import Done from "../components/Done";
@@ -20,7 +20,7 @@ test("reset button updates store values correctly and stops the quiz", async () 
     categoryId: 99,
     currentQuestion: 2,
     quantity: 1,
-    questions: observable<Question>([
+    questions: observable<QuestionType>([
       {
         category: "Entertainment: Video Games",
         type: "multiple",

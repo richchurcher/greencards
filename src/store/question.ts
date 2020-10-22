@@ -1,7 +1,7 @@
 export type QuestionDifficultyLevel = "easy" | "medium" | "hard";
 export type QuestionKind = "multiple" | "boolean";
 
-export interface Question {
+export interface QuestionType {
   category: string;
   type: QuestionKind;
   difficulty: QuestionDifficultyLevel;
