@@ -17,6 +17,8 @@ const AnswerCard = styled.div`
   border-radius: 1rem;
   margin: 1rem;
   color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
 `;
 
 interface AnswerProps {
