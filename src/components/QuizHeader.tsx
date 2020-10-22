@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import styled from "styled-components";
+import { media } from "../theme";
 import Score from "./Score";
 
 const Header = styled.header`
@@ -19,6 +20,11 @@ const Subtitle = styled.span`
   font-size: 0.8rem;
   font-weight: normal;
   margin-left: 0.5rem;
+
+  ${media.mobile`
+    display: block;
+    margin-bottom: 0.5rem;
+  `}
 `;
 
 const QuizHeader: FC = () => (
