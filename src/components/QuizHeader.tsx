@@ -31,12 +31,20 @@ const Subtitle = styled.span`
   `}
 `;
 
+const Title = styled.h1`
+  font-size: 1.5rem;
+
+  ${media.mobile`
+    font-size: 1.2rem;
+  `}
+`;
+
 const QuizHeader: FC = () => (
   <Header>
-    <h1>
+    <Title>
       GreenCards
       <Subtitle>(Not the kind you're thinking of.)</Subtitle>
-    </h1>
+    </Title>
     <Score />
   </Header>
 );

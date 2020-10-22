@@ -13,15 +13,31 @@ const ScoreContainer = styled.span`
 const Number = styled.span`
   color: ${({ theme }) => theme.accent};
   margin: 0 1rem;
-  ${media.mobile`display: block;`}
-  ${media.tablet`display: block;`}
+  ${media.mobile`
+    display: block;
+    margin: 0;
+    font-size: 0.8rem;
+  `}
+  ${media.tablet`
+    display: block;
+    margin: 0;
+  `}
 `;
 
 const Remaining = styled.span`
   margin: 0 1rem;
   color: ${({ theme }) => theme.label90};
-  ${media.mobile`display: block;`}
-  ${media.tablet`display: block;`}
+  min-width: 5rem;
+
+  ${media.mobile`
+    display: block;
+    margin: 0;
+    font-size: 0.8rem;
+  `}
+  ${media.tablet`
+    display: block;
+    margin: 0;
+  `}
 `;
 
 const Score: FC = () => {
