@@ -8,7 +8,6 @@ import ControlLabel from "./ControlLabel";
 const DoneContainer = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 2rem;
 `;
 
 const Message = styled.div`
