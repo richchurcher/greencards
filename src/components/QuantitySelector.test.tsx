@@ -5,18 +5,17 @@ import { QuizStore } from "../store/quiz";
 import { QuizContext } from "../store/QuizProvider";
 import QuantitySelector from "./QuantitySelector";
 
-test("updates quantity in store", () => {
+test("updates quantity in store", async () => {
   const mockStore = { quantity: 0 };
   render(
     <QuizContext.Provider value={mockStore as QuizStore}>
       <QuantitySelector />
     </QuizContext.Provider>
   );
-  userEvent.type(
-    screen.getByRole("spinbutton", {
-      name: /how many questions would you like?/i,
-    }),
-    "5"
-  );
+  const input = screen.getByRole("textbox", {
+    name: /how many questions would you like?/i,
+  });
+  userEvent.clear(input);
+  await userEvent.type(input, "5");
   expect(mockStore.quantity).toBe(5);
 });
