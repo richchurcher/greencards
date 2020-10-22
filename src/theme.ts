@@ -21,6 +21,7 @@ const theme = {
   // util
   greyAccent20: "#00000033",
   label60: "#00000099",
+  label90: "#000000E6",
   lemonMeringue90: "#FAEDCAF2",
 };
 
