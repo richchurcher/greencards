@@ -11,7 +11,7 @@ const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 1rem;
-  padding: 0 1rem;
+  padding: 0.5rem 1.5rem;
   color: ${({ theme }) => theme.label90};
 `;
 

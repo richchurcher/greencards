@@ -28,22 +28,25 @@ const theme = {
 // https://github.com/styled-components/styled-components/blob/master/packages/styled-components/docs/tips-and-tricks.md
 export const media = {
   mobile: (literals: TemplateStringsArray) => css`
-    @media (max-width: ${screenMins.tablet - 1}px) {
+    @media (max-width: ${screenMins.tablet}px) {
       ${css(literals)}
     }
   `,
   tablet: (literals: TemplateStringsArray) => css`
-    @media (max-width: ${screenMins.laptop - 1}px) {
+    @media (min-width: ${screenMins.tablet}px) and (max-width: ${screenMins.laptop -
+      1}px) {
       ${css(literals)}
     }
   `,
   laptop: (literals: TemplateStringsArray) => css`
-    @media (max-width: ${screenMins.desktop - 1}px) {
+    @media (min-width: ${screenMins.laptop}px) and (max-width: ${screenMins.desktop -
+      1}px) {
       ${css(literals)}
     }
   `,
   desktop: (literals: TemplateStringsArray) => css`
-    @media (max-width: ${screenMins.wide - 1}px) {
+    @media (min-width: ${screenMins.desktop}px) and (max-width: ${screenMins.wide -
+      1}px) {
       ${css(literals)}
     }
   `,

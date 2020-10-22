@@ -7,7 +7,6 @@ import AnswerIndicator from "./AnswerIndicator";
 
 const AnswerCard = styled.div`
   min-height: 4rem;
-  width: 100%;
   background-color: ${({ theme }) => theme.darkSeaGreen};
   display: flex;
   align-items: center;
@@ -19,6 +18,7 @@ const AnswerCard = styled.div`
   color: #fff;
   font-weight: bold;
   font-size: 1.1rem;
+  flex-grow: 1;
 `;
 
 interface AnswerProps {

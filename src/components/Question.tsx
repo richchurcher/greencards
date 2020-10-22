@@ -13,8 +13,7 @@ const QuestionTitle = styled.h1`
 
 const QuestionContainer = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-direction: column;
 `;
 

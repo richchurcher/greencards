@@ -1,6 +1,7 @@
 import React, { FC } from "react";
 import styled from "styled-components";
 import { useQuiz } from "../hooks/useQuiz";
+import { media } from "../theme";
 
 interface AnswerIndicatorProps {
   answer: string;
@@ -20,6 +21,12 @@ const Indicator = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  ${media.mobile`
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  `}
 `;
 
 const Correct = styled(Indicator)`
