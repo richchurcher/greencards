@@ -25,6 +25,10 @@ const Subtitle = styled.span`
     display: block;
     margin-bottom: 0.5rem;
   `}
+  ${media.tablet`
+    display: block;
+    margin-bottom: 0.5rem;
+  `}
 `;
 
 const QuizHeader: FC = () => (

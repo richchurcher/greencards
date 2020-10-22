@@ -2,6 +2,7 @@ import { observer } from "mobx-react-lite";
 import React, { FC } from "react";
 import styled from "styled-components";
 import { useQuiz } from "../hooks/useQuiz";
+import { media } from "../theme";
 
 const ScoreContainer = styled.span`
   font-size: 1.2rem;
@@ -11,11 +12,16 @@ const ScoreContainer = styled.span`
 
 const Number = styled.span`
   color: ${({ theme }) => theme.accent};
+  margin: 0 1rem;
+  ${media.mobile`display: block;`}
+  ${media.tablet`display: block;`}
 `;
 
 const Remaining = styled.span`
   margin: 0 1rem;
   color: ${({ theme }) => theme.label90};
+  ${media.mobile`display: block;`}
+  ${media.tablet`display: block;`}
 `;
 
 const Score: FC = () => {
