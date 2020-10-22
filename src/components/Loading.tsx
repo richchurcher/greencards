@@ -20,10 +20,11 @@ const spin = keyframes`
 
 // Credit: adapted from https://loading.io/css/
 const Spinner = styled.div`
-  display: inline-block;
+  display: flex;
   position: relative;
   width: 80px;
   height: 80px;
+  align-self: center;
 
   & div {
     position: absolute;
@@ -38,11 +39,19 @@ const Spinner = styled.div`
   }
 `;
 
+const LoadingContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 1rem;
+`;
+
 const Loading: FC = () => (
-  <Spinner>
-    <div></div>
-    <div></div>
-  </Spinner>
+  <LoadingContainer>
+    <Spinner>
+      <div></div>
+      <div></div>
+    </Spinner>
+  </LoadingContainer>
 );
 
 export default Loading;
