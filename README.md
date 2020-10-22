@@ -1,6 +1,6 @@
 # It's GreenCards
 
-![CI badge](https://github.com/richchurcher/greencards/workflows/Node.js%20CI/badge.svg)
+![CI badge](https://github.com/richchurcher/greencards/workflows/CI/badge.svg) ![CD badge](https://github.com/richchurcher/greencards/workflows/CD/badge.svg)
 
 The demo trivia game to end all demo trivia games!
 
