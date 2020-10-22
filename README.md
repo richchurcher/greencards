@@ -1,5 +1,7 @@
 # It's GreenCards
 
+![CI badge](https://github.com/richchurcher/greencards/workflows/Node.js%20CI/badge.svg)
+
 The demo trivia game to end all demo trivia games!
 
 You can clone and `yarn start`, or [visit the hosted version](). Yes, the `.env` is committed to the repo. It's not a super-secret `.env`. It has no pretensions of grandeur.
