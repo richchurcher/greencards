@@ -1,10 +1,10 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "5fec5fd5b8ef5d0aea845d2ab895f18e",
+    "revision": "107844d485a24f90c61ea815584228dd",
     "url": "/greencards/index.html"
   },
   {
-    "revision": "e48124feae8db75453a6",
+    "revision": "1c1ec05173d222feeef4",
     "url": "/greencards/static/css/main.77db83ca.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/greencards/static/js/2.9a6402af.chunk.js.LICENSE.txt"
   },
   {
-    "revision": "e48124feae8db75453a6",
-    "url": "/greencards/static/js/main.16fd0b1f.chunk.js"
+    "revision": "1c1ec05173d222feeef4",
+    "url": "/greencards/static/js/main.7fed682d.chunk.js"
   },
   {
     "revision": "cfcacea520b7fb81a83b",
