@@ -2,26 +2,31 @@ import { observer } from "mobx-react-lite";
 import React, { FC } from "react";
 import { useQuestions } from "../hooks/useQuestions";
 import { useQuiz } from "../hooks/useQuiz";
+import Done from "./Done";
 import Error from "./Error";
 import Loading from "./Loading";
+import Question from "./Question";
 
-const Quiz: FC = () => {
+interface QuizProps {
+  stop(): void;
+}
+
+const Quiz: FC<QuizProps> = ({ stop }) => {
   useQuestions();
-  const { error, questions, ready } = useQuiz();
+  const { currentQuestion, error, loading, questions } = useQuiz();
 
-  if (!ready) {
-    return (
-      <div>
-        <Loading />
-      </div>
-    );
+  if (error) {
+    return <Error>{error.message}</Error>;
   }
 
-  return (
-    <div>
-      {error && <Error>{error.message}</Error>}
-      QUIZ: {JSON.stringify(questions, null, 2)}
-    </div>
+  if (loading) {
+    return <Loading />;
+  }
+
+  return currentQuestion < questions.length ? (
+    <Question />
+  ) : (
+    <Done stop={stop} />
   );
 };
 
