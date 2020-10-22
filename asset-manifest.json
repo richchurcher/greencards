@@ -1,14 +1,14 @@
 {
   "files": {
     "main.css": "/greencards/static/css/main.77db83ca.chunk.css",
-    "main.js": "/greencards/static/js/main.56ac4075.chunk.js",
-    "main.js.map": "/greencards/static/js/main.56ac4075.chunk.js.map",
+    "main.js": "/greencards/static/js/main.c3fff028.chunk.js",
+    "main.js.map": "/greencards/static/js/main.c3fff028.chunk.js.map",
     "runtime-main.js": "/greencards/static/js/runtime-main.8b5deed7.js",
     "runtime-main.js.map": "/greencards/static/js/runtime-main.8b5deed7.js.map",
     "static/js/2.9a6402af.chunk.js": "/greencards/static/js/2.9a6402af.chunk.js",
     "static/js/2.9a6402af.chunk.js.map": "/greencards/static/js/2.9a6402af.chunk.js.map",
     "index.html": "/greencards/index.html",
-    "precache-manifest.2e7dbda7fad76aef9729b51e3372da3b.js": "/greencards/precache-manifest.2e7dbda7fad76aef9729b51e3372da3b.js",
+    "precache-manifest.7fdfec7963ebfdb957ab7d04e8e7fe0e.js": "/greencards/precache-manifest.7fdfec7963ebfdb957ab7d04e8e7fe0e.js",
     "service-worker.js": "/greencards/service-worker.js",
     "static/css/main.77db83ca.chunk.css.map": "/greencards/static/css/main.77db83ca.chunk.css.map",
     "static/js/2.9a6402af.chunk.js.LICENSE.txt": "/greencards/static/js/2.9a6402af.chunk.js.LICENSE.txt"
@@ -17,6 +17,6 @@
     "static/js/runtime-main.8b5deed7.js",
     "static/js/2.9a6402af.chunk.js",
     "static/css/main.77db83ca.chunk.css",
-    "static/js/main.56ac4075.chunk.js"
+    "static/js/main.c3fff028.chunk.js"
   ]
 }
