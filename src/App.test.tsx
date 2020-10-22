@@ -42,7 +42,7 @@ test("Difficulty selector is rendered", () => {
 
 test("Quantity selector is rendered", () => {
   render(<App />);
-  const selector = screen.getByRole("spinbutton", {
+  const selector = screen.getByRole("textbox", {
     name: /how many questions would you like?/i,
   });
   expect(selector).toBeInTheDocument();
