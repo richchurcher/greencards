@@ -5,7 +5,7 @@ import { mocked } from "ts-jest/utils";
 import { useCategories } from "./useCategories";
 
 const mockedAxios = mocked(axios, true);
-const useQuestionsMock = {
+const useCategoriesMock = {
   data: {
     trivia_categories: [
       {
@@ -21,7 +21,7 @@ const useQuestionsMock = {
 };
 
 beforeEach(() => {
-  mockedAxios.get.mockResolvedValue(useQuestionsMock);
+  mockedAxios.get.mockResolvedValue(useCategoriesMock);
 });
 
 test("returns an array of categories", async () => {
