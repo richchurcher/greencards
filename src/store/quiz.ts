@@ -1,6 +1,9 @@
 import { IObservableArray, observable } from "mobx";
 import { Question, QuestionDifficultyLevel } from "./question";
 
+export const fromBase64 = (s: string): string =>
+  Buffer.from(s, "base64").toString();
+
 export interface QuizStore {
   categoryId: number;
   currentQuestion: number;
@@ -10,6 +13,8 @@ export interface QuizStore {
   ready: boolean;
   quantity: number;
   questions: IObservableArray<Question>;
+  readonly question: Question;
+  readonly randomisedAnswers: string[];
   score: number;
 }
 
@@ -23,6 +28,25 @@ const quizStore = observable<QuizStore>({
   quantity: 1,
   questions: observable<Question>([]),
   score: 0,
+  get question(): Question {
+    return this.questions[this.currentQuestion];
+  },
+  get randomisedAnswers(): string[] {
+    const answers = [
+      this.questions[this.currentQuestion].correct_answer,
+      ...this.questions[this.currentQuestion].incorrect_answers,
+    ];
+
+    // See various sources, ostensibly via Knuth
+    for (let i = answers.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * i);
+      const temp = answers[i];
+      answers[i] = answers[j];
+      answers[j] = temp;
+    }
+
+    return answers;
+  },
 });
 
 export default quizStore;
