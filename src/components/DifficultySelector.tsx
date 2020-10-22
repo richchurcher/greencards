@@ -1,6 +1,8 @@
 import { action } from "mobx";
 import React, { FC } from "react";
 import { useQuiz } from "../hooks/useQuiz";
+import ControlLabel from "./ControlLabel";
+import Select from "./Select";
 
 const DifficultySelector: FC = () => {
   const quiz = useQuiz();
@@ -11,8 +13,8 @@ const DifficultySelector: FC = () => {
 
   return (
     <>
-      <label htmlFor="difficulty">Select difficulty level</label>
-      <select id="difficulty" onChange={setDifficultyLevel}>
+      <ControlLabel htmlFor="difficulty">Select difficulty level:</ControlLabel>
+      <Select id="difficulty" onChange={setDifficultyLevel}>
         <option key="easy" value="easy">
           Easy
         </option>
@@ -22,7 +24,7 @@ const DifficultySelector: FC = () => {
         <option key="hard" value="hard">
           Hard
         </option>
-      </select>
+      </Select>
     </>
   );
 };
